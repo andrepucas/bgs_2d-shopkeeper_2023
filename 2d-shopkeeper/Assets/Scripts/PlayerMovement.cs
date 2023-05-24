@@ -6,9 +6,7 @@ public class PlayerMovement : MonoBehaviour
     // --- VARIABLES -----------------------------------------------------------
 
     [Header("COMPONENTS")]
-    [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private PlayerInput _input;
+    [SerializeField] private GameObject _model;
 
     [Header("INPUT")]
     [SerializeField] private InputActionReference _moveX;
@@ -18,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("PARAMETERS")]
     [SerializeField] private float _moveSpeed = 5f;
 
+    private Rigidbody2D _rb;
+    private Animator _animator;
+    private PlayerInput _input;
+    
     private bool _movingX, _movingY, _inverted;
     private Vector2 _movement;
     private Vector3 _originDir, _invertDir;
@@ -26,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        _rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _input = GetComponent<PlayerInput>();
+        
         _moveX.action.started += _ => {_movingX = true; _movingY = false;};
         _moveY.action.started += _ => {_movingX = false; _movingY = true;};
 
@@ -33,8 +39,8 @@ public class PlayerMovement : MonoBehaviour
         _moveY.action.canceled += _ => _movingY = false;
 
         // Sets Vector3s for character facing direction.
-        _originDir = transform.localScale;
-        _invertDir = _originDir;
+        _originDir = Vector3.one;
+        _invertDir = Vector3.one;
         _invertDir.x = -_invertDir.x;
 
         _inverted = false;
@@ -53,14 +59,14 @@ public class PlayerMovement : MonoBehaviour
         // Inverts sprite when moving left.
         if (_movement.x < 0 && !_inverted) 
         {
-            transform.localScale = _invertDir;
+            _model.transform.localScale = _invertDir;
             _inverted = true;
         }
 
         // Reverts sprite to face right.
         else if (_movement.x > 0 && _inverted)
         {
-            transform.localScale = _originDir;
+            _model.transform.localScale = _originDir;
             _inverted = false;
         }
 
