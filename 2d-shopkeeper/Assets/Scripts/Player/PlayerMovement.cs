@@ -82,5 +82,10 @@ public class PlayerMovement : MonoBehaviour
 
     // --- METHODS -------------------------------------------------------------
 
-    public void Freeze() => _animator.SetFloat("Speed", 0);
+    public void Freeze()
+    {
+        _animator.SetFloat("Speed", 0);
+        _model.transform.localScale = _originDir;
+        _inverted = false;
+    }
 }

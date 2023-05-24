@@ -957,10 +957,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116a8fceea6a89946a59d14f6b382c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionPanel: {fileID: 1319589688}
-  _transitionTime: 1
-  _data: {fileID: 11400000, guid: 5afd07c9fd67b82499b1be720a15ffc8, type: 2}
+  _fadeTime: 0.5
+  _shopkeeperUI: {fileID: 571620707}
+  _radialPanel: {fileID: 1319589688}
+  _fillTime: 1
   _camera: {fileID: 537018687}
+  _data: {fileID: 11400000, guid: 5afd07c9fd67b82499b1be720a15ffc8, type: 2}
 --- !u!1 &197666479
 GameObject:
   m_ObjectHideFlags: 0
@@ -6168,8 +6170,9 @@ GameObject:
   - component: {fileID: 571620704}
   - component: {fileID: 571620706}
   - component: {fileID: 571620705}
+  - component: {fileID: 571620707}
   m_Layer: 5
-  m_Name: Shop Panel
+  m_Name: Shopkeeper Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6215,6 +6218,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571620703}
   m_CullTransparentMesh: 1
+--- !u!114 &571620707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571620703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299590b364775dd4bbb6eee2a5ded8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 571620705}
 --- !u!1 &577266865
 GameObject:
   m_ObjectHideFlags: 0

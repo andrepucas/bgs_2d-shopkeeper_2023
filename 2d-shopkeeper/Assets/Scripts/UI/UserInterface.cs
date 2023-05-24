@@ -12,13 +12,18 @@ public class UserInterface : MonoBehaviour
     
     // --- VARIABLES -----------------------------------------------------------
 
-    [SerializeField] private Image _transitionPanel;
-    [SerializeField] private float _transitionTime;
+    [Header("PANELS")]
+    [SerializeField] private float _fadeTime;
+    [SerializeField] private UIPanelShopkeeper _shopkeeperUI;
+    
+    [Header("RADIAL TRANSITION")]
+    [SerializeField] private Image _radialPanel;
+    [SerializeField] private float _fillTime;
 
     [Header("DATA")]
-    [SerializeField] private GeneralDataSO _data;
     [SerializeField] private Camera _camera;
-    
+    [SerializeField] private GeneralDataSO _data;
+
     // --- ON OBJECT STARTUP ---------------------------------------------------
 
     private void OnEnable() => GameManager.OnNewGameState += UpdateDisplayedUI;
@@ -41,10 +46,11 @@ public class UserInterface : MonoBehaviour
         float m_elapsedTime = 0;
 
         // Hide screen.
-        while (_transitionPanel.fillAmount < 1)
+        _radialPanel.fillClockwise = true;
+        while (_radialPanel.fillAmount < 1)
         {
-            _transitionPanel.fillAmount = Mathf.Lerp(
-                0, 1, (m_elapsedTime / _transitionTime));
+            _radialPanel.fillAmount = Mathf.Lerp(
+                0, 1, (m_elapsedTime / _fillTime));
 
             m_elapsedTime += Time.unscaledDeltaTime;
             yield return null;
@@ -59,13 +65,17 @@ public class UserInterface : MonoBehaviour
 
         // Reveal screen.
         m_elapsedTime = 0;
-        while (_transitionPanel.fillAmount != 0)
+        _radialPanel.fillClockwise = false;
+        while (_radialPanel.fillAmount != 0)
         {
-            _transitionPanel.fillAmount = Mathf.Lerp(
-                1, 0, (m_elapsedTime / _transitionTime));
+            _radialPanel.fillAmount = Mathf.Lerp(
+                1, 0, (m_elapsedTime / _fillTime));
 
             m_elapsedTime += Time.unscaledDeltaTime;
             yield return null;
         }
+
+        // Reveal shopkeeper UI.
+        _shopkeeperUI.Open(_fadeTime);
     }
 }
