@@ -18,8 +18,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("PARAMETERS")]
     [SerializeField] private float _moveSpeed = 5f;
 
-    private bool _movingX, _movingY;
+    private bool _movingX, _movingY, _inverted;
     private Vector2 _movement;
+    private Vector3 _originDir, _invertDir;
 
     // --- ON OBJECT STARTUP ---------------------------------------------------
 
@@ -30,6 +31,13 @@ public class PlayerMovement : MonoBehaviour
 
         _moveX.action.canceled += _ => _movingX = false;
         _moveY.action.canceled += _ => _movingY = false;
+
+        // Sets Vector3s for character facing direction.
+        _originDir = transform.localScale;
+        _invertDir = _originDir;
+        _invertDir.x = -_invertDir.x;
+
+        _inverted = false;
     }
     
     // --- UPDATE --------------------------------------------------------------
@@ -42,8 +50,21 @@ public class PlayerMovement : MonoBehaviour
         if (_movingX) _movement.y = 0;
         else if (_movingY) _movement.x = 0;
 
-        _animator.SetFloat("Horizontal", _movement.x);
-        _animator.SetFloat("Vertical", _movement.y);
+        // Inverts sprite when moving left.
+        if (_movement.x < 0 && !_inverted) 
+        {
+            transform.localScale = _invertDir;
+            _inverted = true;
+        }
+
+        // Reverts sprite to face right.
+        else if (_movement.x > 0 && _inverted)
+        {
+            transform.localScale = _originDir;
+            _inverted = false;
+        }
+
+        // Alternates between idle and running animations.
         _animator.SetFloat("Speed", _movement.sqrMagnitude);
     }
 
