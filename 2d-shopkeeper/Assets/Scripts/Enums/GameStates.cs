@@ -3,6 +3,6 @@ public enum GameStates
 {
     SPAWN,
     ROAM,
-    CUSTOMIZE,
+    RESUME_ROAM,
     SHOP
 }

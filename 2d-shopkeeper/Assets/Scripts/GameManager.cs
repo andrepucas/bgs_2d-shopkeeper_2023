@@ -23,12 +23,16 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerInteraction.OnShopkeeperKnock += () => UpdateGameState(GameStates.SHOP);
+        UIPanelShopkeeper.OnDone += () => UpdateGameState(GameStates.RESUME_ROAM);
+        UserInterface.OnScreenRevealed += () => UpdateGameState(GameStates.ROAM);
         UserInterface.OnMovePlayer += MovePlayer;
     }
 
     private void OnDisable()
     {
         PlayerInteraction.OnShopkeeperKnock -= () => UpdateGameState(GameStates.SHOP);
+        UIPanelShopkeeper.OnDone -= () => UpdateGameState(GameStates.RESUME_ROAM);
+        UserInterface.OnScreenRevealed -= () => UpdateGameState(GameStates.ROAM);
         UserInterface.OnMovePlayer -= MovePlayer;
     }
 
@@ -39,7 +43,8 @@ public class GameManager : MonoBehaviour
         switch (p_gameState)
         {
             case GameStates.SPAWN:
-                UpdateGameState(GameStates.ROAM);
+                _playerMovement.enabled = false;
+                _playerInteraction.enabled = false;
                 break;
 
             case GameStates.ROAM:
@@ -47,7 +52,7 @@ public class GameManager : MonoBehaviour
                 _playerInteraction.enabled = true;
                 break;
 
-            case GameStates.CUSTOMIZE:
+            case GameStates.RESUME_ROAM:
                 break;
 
             case GameStates.SHOP:
