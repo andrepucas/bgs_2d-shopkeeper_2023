@@ -11,6 +11,7 @@ public class PlayerInteraction : MonoBehaviour
     [Header("INPUT")]
     [SerializeField] private InputActionReference _interact;
 
+    private const string HOME = "Home";
     private const string SHOPKEEPER = "Shopkeeper";
 
     private PlayerInput _input;
@@ -30,7 +31,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D p_col)
     {
-        if (p_col.tag == SHOPKEEPER)
+        if (p_col.tag == SHOPKEEPER || p_col.tag == HOME)
             _notification.SetActive(true);
 
         _interactable = p_col.tag;
@@ -38,7 +39,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D p_col)
     {
-        if (p_col.tag == SHOPKEEPER)
+        if (p_col.tag == SHOPKEEPER || p_col.tag == HOME)
             _notification.SetActive(false);
 
         _interactable = "";
@@ -50,8 +51,12 @@ public class PlayerInteraction : MonoBehaviour
     {
         switch (_interactable)
         {
-            case SHOPKEEPER:
+            case HOME:
                 Debug.Log(1);
+                break;
+            
+            case SHOPKEEPER:
+                Debug.Log(2);
                 break;
         }
     }
