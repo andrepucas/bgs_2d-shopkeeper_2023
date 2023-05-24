@@ -1,8 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    // --- EVENTS --------------------------------------------------------------
+
+    public static event Action OnShopkeeperKnock;
+    
     // --- VARIABLES -----------------------------------------------------------
 
     [Header("COMPONENTS")]
@@ -56,6 +61,7 @@ public class PlayerInteraction : MonoBehaviour
                 break;
             
             case SHOPKEEPER:
+                OnShopkeeperKnock?.Invoke();
                 Debug.Log(2);
                 break;
         }

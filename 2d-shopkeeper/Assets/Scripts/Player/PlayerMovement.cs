@@ -79,4 +79,8 @@ public class PlayerMovement : MonoBehaviour
         _rb.MovePosition(_rb.position + _movement.normalized * _moveSpeed 
             * Time.fixedDeltaTime);
     }
+
+    // --- METHODS -------------------------------------------------------------
+
+    public void Freeze() => _animator.SetFloat("Speed", 0);
 }

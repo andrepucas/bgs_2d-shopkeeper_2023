@@ -1928,6 +1928,7 @@ GameObject:
   - component: {fileID: 95000011853063210}
   - component: {fileID: 3397119055493087046}
   - component: {fileID: 7377338586948413195}
+  - component: {fileID: 7559515539482117617}
   m_Layer: 0
   m_Name: CustomizablePlayer
   m_TagString: Player
@@ -2073,6 +2074,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _notification: {fileID: 4697162509384870415}
   _interact: {fileID: 4098003479973421022, guid: 56c97a2c28678ab42a7262190f7fe3e0, type: 3}
+--- !u!114 &7559515539482117617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6131538384537802541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca82ac4f7a82c024db646256f1e7a686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hair: {fileID: 6333530911895252387}
+  _face: {fileID: 6333530909144870289}
+  _torso: {fileID: 6333530910761279031}
+  _lShoulder: {fileID: 6333530910726910585}
+  _rShoulder: {fileID: 6333530910938363365}
+  _lElbow: {fileID: 6333530911545388519}
+  _rElbow: {fileID: 6333530909397162513}
+  _lWrist: {fileID: 6333530909310266867}
+  _rWrist: {fileID: 6333530908756591829}
+  _lWeapon: {fileID: 6333530910925287861}
+  _rWeapon: {fileID: 6333530908742643513}
+  _pelvis: {fileID: 6333530916700694639}
+  _lLeg: {fileID: 6333530909387920061}
+  _rLeg: {fileID: 6333530909388926543}
+  _lBoot: {fileID: 6333530911334220743}
+  _rBoot: {fileID: 6333530909264708033}
+  _allParts: {fileID: 11400000, guid: e246a5ff3b594ec41bb41ecf70404952, type: 2}
 --- !u!1 &6131538385015329905
 GameObject:
   m_ObjectHideFlags: 0

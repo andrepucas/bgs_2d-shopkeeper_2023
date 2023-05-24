@@ -1,14 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // --- EVENTS --------------------------------------------------------------
+
+    public static event Action<GameStates> OnNewGameState;
+    
     // --- VARIABLES -----------------------------------------------------------
 
     [Header("PLAYER")]
     [SerializeField] private GameObject _player;
-    [SerializeField] private Camera _camera;
+    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerInteraction _playerInteraction;
 
     // --- ON OBJECT STARTUP ---------------------------------------------------
 
@@ -16,12 +22,14 @@ public class GameManager : MonoBehaviour
     
     private void OnEnable()
     {
-        // Subscribe to events.
+        PlayerInteraction.OnShopkeeperKnock += () => UpdateGameState(GameStates.SHOP);
+        UserInterface.OnMovePlayer += MovePlayer;
     }
 
     private void OnDisable()
     {
-        // Unsubscribe to events.
+        PlayerInteraction.OnShopkeeperKnock -= () => UpdateGameState(GameStates.SHOP);
+        UserInterface.OnMovePlayer -= MovePlayer;
     }
 
     // --- METHODS -------------------------------------------------------------
@@ -35,30 +43,22 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameStates.ROAM:
-                TogglePlayer(true);
+                _playerMovement.enabled = true;
+                _playerInteraction.enabled = true;
                 break;
 
             case GameStates.CUSTOMIZE:
-                TogglePlayer(false);
                 break;
 
             case GameStates.SHOP:
-                TogglePlayer(false);
+                _playerMovement.Freeze();
+                _playerMovement.enabled = false;
+                _playerInteraction.enabled = false;
                 break;
         }
+
+        OnNewGameState?.Invoke(p_gameState);
     }
 
-    private void TogglePlayer(bool p_enable)
-    {
-        if (p_enable) _camera.transform.SetParent(_player.transform);
-        else _camera.transform.SetParent(null);
-
-        _player.SetActive(p_enable);
-    }
-
-    private IEnumerator Delay(float p_seconds, GameStates p_state)
-    {
-        yield return new WaitForSeconds(p_seconds);
-        UpdateGameState(p_state);
-    }
+    private void MovePlayer(Vector3 p_pos) => _player.transform.position = p_pos;
 }
