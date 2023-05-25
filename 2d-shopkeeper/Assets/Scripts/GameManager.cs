@@ -65,9 +65,5 @@ public class GameManager : MonoBehaviour
         OnNewGameState?.Invoke(p_gameState);
     }
 
-    private void MovePlayer(Vector3 p_pos)
-    {
-        _player.transform.position = p_pos;
-        Debug.Log(1);
-    }
+    private void MovePlayer(Vector3 p_pos) => _player.transform.position = p_pos;
 }
