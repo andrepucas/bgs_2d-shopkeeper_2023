@@ -94,7 +94,7 @@ public class ShopItemCard : MonoBehaviour
         OnTransaction?.Invoke();
 
         _locked.SetActive(false);
-        _owned.SetActive(true);
+        Equip();
     }
 
     public void Sell()
