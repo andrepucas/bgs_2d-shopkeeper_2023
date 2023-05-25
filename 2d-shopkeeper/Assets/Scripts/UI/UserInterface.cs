@@ -18,6 +18,7 @@ public class UserInterface : MonoBehaviour
     [Header("PANELS")]
     [SerializeField] private float _fadeTime;
     [SerializeField] private UIPanelShopkeeper _shopkeeperUI;
+    [SerializeField] private UIPanelRoam _roamUI;
     
     [Header("RADIAL TRANSITION")]
     [SerializeField] private Image _radialPanel;
@@ -40,7 +41,11 @@ public class UserInterface : MonoBehaviour
         {
             case GameStates.SPAWN:
 
+                _shopkeeperUI.gameObject.SetActive(true);
+                _roamUI.gameObject.SetActive(true);
+                
                 _shopkeeperUI.Close();
+                _roamUI.Close();
 
                 // Zoom out camera.
                 _camera.orthographicSize = _data.CamZoomOutSize;
@@ -49,20 +54,17 @@ public class UserInterface : MonoBehaviour
                 OnMovePlayer?.Invoke(_data.SpawnPos);
 
                 StartCoroutine(RevealScreen());
-                Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.None;
                 break;
 
             case GameStates.RESUME_ROAM:
 
                 StartCoroutine(TransitionToRoam());
-                Cursor.visible = false;
                 break;
 
             case GameStates.SHOP:
 
                 StartCoroutine(TransitionToShop());
-                Cursor.visible = true;
                 break;
         }
     }
@@ -85,11 +87,14 @@ public class UserInterface : MonoBehaviour
         }
 
         OnScreenRevealed?.Invoke();
+        _roamUI.Open(_fadeTime);
     }
     
     private IEnumerator TransitionToShop()
     {
         float m_elapsedTime = 0;
+
+        _roamUI.Close(_fadeTime);
 
         // Hide screen.
         _radialPanel.fillClockwise = true;
@@ -163,5 +168,6 @@ public class UserInterface : MonoBehaviour
         }
 
         OnScreenRevealed?.Invoke();
+        _roamUI.Open(_fadeTime);
     }
 }

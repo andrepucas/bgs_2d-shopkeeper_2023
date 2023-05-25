@@ -21,7 +21,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private const string SHOPKEEPER = "Shopkeeper";
 
-    private PlayerInput _input;
     private string _interactable;
 
     // --- ON OBJECT STARTUP ---------------------------------------------------
