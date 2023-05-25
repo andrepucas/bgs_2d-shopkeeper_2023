@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Scriptable object responsible for holding shared game data.
+/// </summary>
 [CreateAssetMenu(fileName = "GeneralData", menuName = "Data/General Data")]
 public class GeneralDataSO : ScriptableObject
 {

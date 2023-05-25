@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
+/// <summary>
+/// Class that handles the UI shown inside the shopkeeper.
+/// </summary>
 public class UIPanelShopkeeper : UIPanelAbstract
 {
     // --- EVENTS --------------------------------------------------------------

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 /// <summary>
-/// Handles opening and closing panel behaviours.
+/// Abstract class that handles opening and closing panel behaviours.
 /// </summary>
 public abstract class UIPanelAbstract : MonoBehaviour
 {

@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Class that handles player interaction with the environment.
+/// </summary>
 public class PlayerInteraction : MonoBehaviour
 {
     // --- EVENTS --------------------------------------------------------------

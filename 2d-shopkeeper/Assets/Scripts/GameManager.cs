@@ -1,8 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Central class. Manages game states through received events.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     // --- EVENTS --------------------------------------------------------------

@@ -1,10 +1,12 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Class that holds and manages the information of each item card in the shop.
+/// </summary>
 public class ShopItemCard : MonoBehaviour
 {
     // --- EVENTS --------------------------------------------------------------

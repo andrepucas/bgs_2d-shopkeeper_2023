@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class that manages all game UI, opening and closing panels.
+/// </summary>
 public class UserInterface : MonoBehaviour
 {
     // --- EVENTS --------------------------------------------------------------

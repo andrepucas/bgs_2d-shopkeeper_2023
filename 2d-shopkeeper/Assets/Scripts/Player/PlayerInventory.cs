@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class that handles the player's equipment and money.
+/// </summary>
 public class PlayerInventory : MonoBehaviour
 {
     // --- VARIABLES -----------------------------------------------------------

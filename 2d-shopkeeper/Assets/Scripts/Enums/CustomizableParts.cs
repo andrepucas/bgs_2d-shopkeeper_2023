@@ -1,4 +1,7 @@
 
+/// <summary>
+/// Enum containing all customizable body parts' categories.
+/// </summary>
 public enum CustomizableParts
 {
     HOOD,

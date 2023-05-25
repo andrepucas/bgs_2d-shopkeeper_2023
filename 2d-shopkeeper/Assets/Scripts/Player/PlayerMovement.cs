@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Class that handles the player's movement.
+/// Doesn't allow for diagonal movement.
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     // --- VARIABLES -----------------------------------------------------------
