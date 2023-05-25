@@ -18,8 +18,6 @@ public class GameManager : MonoBehaviour
 
     // --- ON OBJECT STARTUP ---------------------------------------------------
 
-    private void Awake() => UpdateGameState(GameStates.SPAWN);
-    
     private void OnEnable()
     {
         PlayerInteraction.OnShopkeeperKnock += () => UpdateGameState(GameStates.SHOP);
@@ -35,6 +33,8 @@ public class GameManager : MonoBehaviour
         UserInterface.OnScreenRevealed -= () => UpdateGameState(GameStates.ROAM);
         UserInterface.OnMovePlayer -= MovePlayer;
     }
+
+    private void Start() => UpdateGameState(GameStates.SPAWN);
 
     // --- METHODS -------------------------------------------------------------
     
@@ -65,5 +65,9 @@ public class GameManager : MonoBehaviour
         OnNewGameState?.Invoke(p_gameState);
     }
 
-    private void MovePlayer(Vector3 p_pos) => _player.transform.position = p_pos;
+    private void MovePlayer(Vector3 p_pos)
+    {
+        _player.transform.position = p_pos;
+        Debug.Log(1);
+    }
 }

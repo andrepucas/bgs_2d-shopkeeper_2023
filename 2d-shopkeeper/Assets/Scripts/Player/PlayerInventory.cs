@@ -25,51 +25,53 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private SpriteRenderer _rBoot;
 
     [Header("DATA")]
-    [SerializeField] private StarterBodyPartsSO _starterParts;
+    [SerializeField] private GeneralDataSO _data;
+
+    private int _money;
 
     // --- ON OBJECT STARTUP ---------------------------------------------------
 
     private void Awake()
     {
-        _starterParts.Reset();
+        _data.Reset();
         
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.HOOD, 
             new Sprite[]{_hood.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.FACE, 
             new Sprite[]{_face.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.TORSO, 
             new Sprite[]{_torso.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.SHOULDERS, 
             new Sprite[]{_lShoulder.sprite, _rShoulder.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.ELBOWS, 
             new Sprite[]{_lElbow.sprite, _rElbow.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.WRISTS, 
             new Sprite[]{_lWrist.sprite, _rWrist.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.WEAPONS, 
             new Sprite[]{_lWeapon.sprite, _rWeapon.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.PELVIS, 
             new Sprite[]{_pelvis.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.LEGS, 
             new Sprite[]{_lLeg.sprite, _rLeg.sprite});
 
-        _starterParts.AddPart(
+        _data.AddPart(
             CustomizableParts.BOOTS, 
             new Sprite[]{_lBoot.sprite, _rBoot.sprite});
     }

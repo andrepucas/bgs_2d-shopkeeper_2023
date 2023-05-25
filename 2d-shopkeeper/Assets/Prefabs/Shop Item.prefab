@@ -913,7 +913,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: aa3c97470a4d5234ea50591a35ff9616, type: 3}
   - {fileID: 21300000, guid: 9af6155338c0e8f4ab8f5bb30b4c586e, type: 3}
   _value: 50
-  _starterPack: {fileID: 11400000, guid: a780f182df34bf2498ceee1e8f2771a5, type: 2}
+  _data: {fileID: 11400000, guid: 5afd07c9fd67b82499b1be720a15ffc8, type: 2}
 --- !u!1 &4549897681786207992
 GameObject:
   m_ObjectHideFlags: 0

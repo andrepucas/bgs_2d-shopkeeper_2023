@@ -10,6 +10,7 @@ public class ShopItemCard : MonoBehaviour
     // --- EVENTS --------------------------------------------------------------
 
     public static event Action<Sprite[], CustomizableParts> OnEquip;
+    public static event Action OnTransaction;
     
     // --- VARIABLES -----------------------------------------------------------
 
@@ -29,9 +30,7 @@ public class ShopItemCard : MonoBehaviour
     [SerializeField] private int _value;
 
     [Header("DATA")]
-    [SerializeField] private StarterBodyPartsSO _starterPack;
-
-    public int Value => _value;
+    [SerializeField] private GeneralDataSO _data;
 
     // --- ON OBJECT STARTUP ---------------------------------------------------
 
@@ -57,7 +56,7 @@ public class ShopItemCard : MonoBehaviour
     private void Start()
     {
         // Set starter items as equipped.
-        if (_starterPack.Contains(_bodyPart, _sprites[0]))
+        if (_data.Contains(_bodyPart, _sprites[0]))
         {
             _locked.SetActive(false);
             _equipped.SetActive(true);
@@ -87,12 +86,20 @@ public class ShopItemCard : MonoBehaviour
 
     public void Buy()
     {
+        if (_data.Money < _value) return;
+
+        _data.Money -= _value;
+        OnTransaction?.Invoke();
+
         _locked.SetActive(false);
         _owned.SetActive(true);
     }
 
     public void Sell()
     {
+        _data.Money += _value;
+        OnTransaction?.Invoke();
+
         _owned.SetActive(false);
         _locked.SetActive(true);
     }

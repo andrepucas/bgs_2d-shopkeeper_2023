@@ -17,4 +17,6 @@ MonoBehaviour:
   _zoomInPos: {x: 6, y: 4, z: -10}
   _zoomOutPos: {x: 0, y: 0, z: -10}
   _doorPos: {x: 10, y: 3, z: 0}
-  _shopPos: {x: 0, y: 17, z: 0}
+  _shopPos: {x: 0, y: 18.5, z: 0}
+  _spawnPos: {x: 0, y: -4, z: 0}
+  _money: 7500

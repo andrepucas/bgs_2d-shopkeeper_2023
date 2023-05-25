@@ -38,6 +38,13 @@ public class UserInterface : MonoBehaviour
             case GameStates.SPAWN:
 
                 _shopkeeperUI.Close();
+
+                // Zoom out camera.
+                _camera.orthographicSize = _data.CamZoomOutSize;
+                _camera.transform.localPosition = _data.CamZoomOutPos;
+
+                OnMovePlayer?.Invoke(_data.SpawnPos);
+
                 StartCoroutine(RevealScreen());
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.None;
@@ -123,7 +130,7 @@ public class UserInterface : MonoBehaviour
         _shopkeeperUI.Close(_fadeTime);
 
         // Hide screen.
-        _radialPanel.fillClockwise = true;
+        _radialPanel.fillClockwise = false;
         while (_radialPanel.fillAmount < 1)
         {
             _radialPanel.fillAmount = Mathf.Lerp(
@@ -142,7 +149,7 @@ public class UserInterface : MonoBehaviour
 
         // Reveal screen.
         m_elapsedTime = 0;
-        _radialPanel.fillClockwise = false;
+        _radialPanel.fillClockwise = true;
         while (_radialPanel.fillAmount != 0)
         {
             _radialPanel.fillAmount = Mathf.Lerp(
