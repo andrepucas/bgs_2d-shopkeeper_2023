@@ -31,11 +31,11 @@ so I made sure it couldn't move diagonally, pokemon style.
 ### Day 2
 
 > **May 24th (12:00 -> 00:00)**  
-> Note: Abandoned tech test due to some personal limitations, returned later on, 
+> Note: Abandoned tech test due to some personal limitations, returned later on,
 > at this date.
 
 The problem with sprite sheet animations is that they are super impractical
-for customizable characters (which I only realised later). For every new item, 
+for customizable characters (which I only realised later). For every new item,
 the animation sprites multiply exponentially and eventually become unmanageable.
 
 The solution for this was to get a [new character asset][character], with a
